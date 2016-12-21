@@ -1,0 +1,39 @@
+.clear-right {
+	clear:right;
+}
+
+.smallinput {
+	width: 60px !important;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.no-underline {
+	text-decoration: none !important;
+}
+
+label {
+	display:inline-block;
+	min-width:100px;
+	line-height:2em;
+	vertical-align:middle;
+}
+
+.table thead th {
+	text-align: center !important;
+}
+
+.dataTable thead th {
+	text-align: center !important;
+}
+ 
+.no-border {
+	border: 0px !important;
+	
+}
+
+.logocolor, .current {
+  background: #F7AD00 !important;
+}
