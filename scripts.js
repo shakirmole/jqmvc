@@ -1,17 +1,7 @@
-var textWithBkg = 'bg-darkCyan fg-white';
-var submitBtn; var loadBtn;
+var submitButton; var loadButton;
 
 function addClasses() {
-	$('.table th,input:button,input:submit,.button').addClass(textWithBkg);
-	$('.sp_button').removeClass(textWithBkg);
-}
-
-function createCalenders() {
-	$(".datepicker").datepicker({
-		format: "yyyy-mm-dd", // set output format
-		effect: "fade", // none, slide, fade
-		position: "bottom", // top or bottom,
-	});
+	
 }
 
 function openWindow(link) {
@@ -29,55 +19,38 @@ $( function() {
 
 function performLoads() {
 	addClasses();
-	createCalenders();
 	processForms();
 }
 
 function triggerError(msg) {
-	$.Notify({
-		content: msg,
-		style: {background:'#ff2d19',color:'white'}
-	});	
+	
 	resetSubmit();
 }
 
 function triggerMessage(msg) {
-	$.Notify({
-		content: msg,
-		style: {background:'#7ad61d',color:'white'}
-	});
+	
 }
 
 function submitForm() {
 	storePOST($(this).closest('form').serialize());
-	url = $(this).attr('action');
-	getParameters(url);
+	route = $(this).attr('action');
+	redirect(route);
 	
-	submitBtn = $('.submit');
-	if (submitBtn.hasClass('place-right')) var oclass = 'place-right'; else var oclass = '';
-	btn = '<button onclick="return false;" class="button '+oclass+' warning"><span class="mif-spinner2 mif-ani-spin"></span> Loading</button>';
-	submitBtn.hide();
-	loadBtn = $(btn).insertAfter(submitBtn);
+	submitButton = $('.submit');
+	if (submitButton.hasClass('pull-right')) var otherClass = 'pull-right'; else var otherClass = '';
+	submitButton.hide();
+
+	button = '<button onclick="return false;" class="btn btn-warning '+otherClass+'">Loading</button>';
+	loadButton = $(button).insertAfter(submitButton);
+
 	loadPage();
 }
 
 function resetSubmit() {
-	loadBtn.remove();
-	submitBtn.show();
+	loadButton.remove();
+	submitButton.show();
 }
 
 function processForms() {
 	$('form').on('submit',submitForm);
-}
-
-function loadTemplate(filename) {
-	$('#content').load(viewpath+filename, function(){
-		performLoads();
-	});
-}
-
-function redirect(newctrl,newaction) {
-	ctrl = newctrl;
-	action = newaction;
-	loadPage();
 }

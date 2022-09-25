@@ -2,7 +2,7 @@ if (action == 'login') {
 	loadTemplate('login.html');
 }
 
-if (action == 'dologin') {	
+if (action == 'sign_in') {	
 	var username = POST['username'];
 	var password = POST['password'];
 
@@ -21,7 +21,7 @@ if (action == 'dologin') {
 			if (data[0]['status']) {
 				triggerMessage('Successfully Logged In');
 				sessionStorage.setItem('username',data[0].username);
-				loadTemplate('home.html');
+				redirect('home');
 			} else {
 				triggerError('Your account has been deactivated');
 			}
@@ -32,5 +32,5 @@ if (action == 'dologin') {
 if (action == 'logout') {
 	sessionStorage.clear();
 	triggerMessage('Successfully Logged Out');
-	redirect('authenticate','login');
+	redirect('home');
 }

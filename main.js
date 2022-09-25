@@ -1,18 +1,16 @@
-var app = angular.module('app',[]);
 
-app.controller('MainController', ['$scope', function($scope) {
-	
-}]);
-
-var ctrl = 'home';
-var action = 'index';
-var viewpath = 'views/';
-var ctrlpath = 'controllers/';
+var controller;
+var action;
+var viewPath = 'views/';
+var controllerPath = 'controllers/';
 var POST = [];
+
+if (!controller) controller = 'home';
+if (!action) action = 'home';
 
 var username = sessionStorage.getItem('username');
 if ( !username ) {
-	ctrl = 'authenticate';
+	controller = 'authenticate';
 	action = 'login';
 }
 
@@ -20,7 +18,7 @@ loadPage();
 
 function getParameters(url){
 	var params = url.split("/");
-	ctrl = params[1];
+	controller = params[1];
 	action = params[2];
 };
 
@@ -32,9 +30,24 @@ function storePOST(data){
 	}
 }
 
+function loadTemplate(filename) {
+	$('#content').load(viewPath+filename, function(){
+		performLoads();
+	});
+}
+
+function redirect(route) {
+	var pageRedirect = searchForRoute(route);
+	console.log(pageRedirect);
+	controller = pageRedirect.controller;
+	action = pageRedirect.action;
+	loadPage();
+}
+
 function loadPage() {
+	// console.log(controllerPath+controller+'.js')
 	$.ajax({
-		url: ctrlpath+ctrl+'.js',
+		url: controllerPath+controller+'.js',
 		dataType: 'script',
 		success: function (response) {
 			// triggerMessage('loaded');

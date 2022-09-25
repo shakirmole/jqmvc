@@ -1,29 +1,26 @@
 <!DOCTYPE html>
-<html ng-app="app">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<title>Car Stock</title>
 		
-		<!-- Scripts -->
-		<script src="js/angular.js"></script>
-		<script src="js/jquery.js"></script>
-		<script src="js/metro.js"></script>
-		<script src="js/datatables.js"></script>
-		<script src="js/select2.js"></script>
-		
-		<!-- External -->
-		<script src="js/sha256.js"></script>
-		<script src="js/sql.js"></script>
+		<!-- Libs -->
+		<script src="libs/sha256.js"></script>
+		<script src="libs/sql.js"></script>
+		<script src="libs/jquery/dist/jquery.min.js"></script>
+		<script src="libs/feather-icons/dist/feather.min.js"></script>
+		<script src="libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="libs/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+		<script src="libs/theme.min.js"></script>
 		
 		<!-- Styles -->
-		<link rel="stylesheet" href="css/metro.css">
-		<link rel="stylesheet" href="css/metro-icons.css">
-		<link rel="stylesheet" href="css/metro-responsive.css">
-		<link rel="stylesheet" href="css/style.css">
+		<link href="css/theme.min.css" rel="stylesheet">
+		<link href="libs/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 		
 		<!-- Main -->
 		<script src="main.js"></script>
 		<script src="scripts.js"></script>	
+		<script src="routes.js"></script>	
 		<script src="db.js"></script>
 		<script src="instantiate.js"></script>
 		
@@ -31,11 +28,10 @@
 		<script src="models/users.js"></script>
 		
 	</head>
-	<body ng-controller="MainController">
+	<body>
 		
 		<div id="menu"></div>
 		<div id="content"></div>
 		
-		<div data-role="dialog" data-overlay="true" data-overlay-color="op-dark" data-overlay-click-close="true" id="dialog" class="padding20" data-width="800" data-height="600" style="overflow:auto;width:100%"></div>
 	</body>
 </html>	

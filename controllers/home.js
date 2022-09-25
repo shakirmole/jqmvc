@@ -1,3 +1,5 @@
-if (action == 'index') {
+isLoggedIn();
+
+if (action == 'home') {
 	loadTemplate('home.html');
 }
